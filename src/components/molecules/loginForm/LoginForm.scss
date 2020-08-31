@@ -1,9 +1,11 @@
+// form container
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+// each form field section
 .form-section {
   margin: 10px;
   width: 100%;

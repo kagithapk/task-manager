@@ -1,3 +1,4 @@
+// login form fields elements
 export const loginFormFields = [
   {
     element: 'input',
@@ -33,6 +34,7 @@ export const loginFormFields = [
   },
 ];
 
+// sign up form fields elements
 export const signInFormFields = [
   {
     element: 'input',

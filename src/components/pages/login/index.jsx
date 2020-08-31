@@ -4,6 +4,11 @@ import InitialTemplate from '../../templates/initialTemplate';
 import { loginFormFields, signInFormFields } from '../../../constants/formFields';
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
 
+/*
+  props:
+  history: object of history (use to navigate)
+*/
+
 const LoginPage = ({ history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -95,6 +100,7 @@ const LoginPage = ({ history }) => {
         tabOptionTwoText="Sign up"
         onTabClick={onTabClick}
         form={form}
+        formType={formType}
       />
     </>
   );
