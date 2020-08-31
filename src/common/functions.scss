@@ -21,7 +21,8 @@
 
 // default input styles
 @mixin default-input-styles {
-  border: $light-gray solid 1px;
+  // border: $light-gray solid 1px;
+  border: none;
   border-radius: $border-radius;
   padding: 5px;
   width: 100%;

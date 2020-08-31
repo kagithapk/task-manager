@@ -17,7 +17,7 @@ export const loginFormFields = [
     props: {
       id: 'login-password',
       type: 'password',
-      name: 'Name',
+      name: 'Password',
       placeholder: 'Enter Password',
       className: 'input-large',
     },
@@ -63,7 +63,7 @@ export const signInFormFields = [
     props: {
       id: 'login-password',
       type: 'password',
-      name: 'Name',
+      name: 'Password',
       placeholder: 'Enter Password',
       className: 'input-large',
     },

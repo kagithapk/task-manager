@@ -1,6 +1,60 @@
 @import "../../../common/variables.scss";
 @import "../../../common/functions.scss";
 
+@mixin input-label-shrink() {
+  font-size: 12px;
+  top: 0;
+  transition: all ease-in-out 1s;
+}
+
+@mixin stay-line-itself() {
+  transform: translateX(0);
+  transition: all ease-in-out 1s;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 15px 0 10px 0;
+
+  .input-label {
+    padding: 0 5px;
+    position: absolute;
+    font-size: 18px;
+    top: 20px;
+    transition: all ease-in-out 1s;
+  }
+
+  .shrink {
+    position: absolute;
+    @include input-label-shrink();
+  }
+
+  .border-line {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    border-bottom: 2px solid $black;
+    transform: translateX(-101%);
+    bottom: 2px;
+    transition: all ease-in-out 1s;
+  }
+
+  .stay-line {
+    @include stay-line-itself();
+  }
+
+  &:focus-within {
+    .border-line {
+      @include stay-line-itself();
+    }
+
+    .input-label {
+      @include input-label-shrink();
+    }
+  }
+}
 // default input styles
 .input-default {
   @include default-input-styles();
