@@ -1,0 +1,22 @@
+@import "../../../common/variables.scss";
+@import "../../../common/functions.scss";
+
+// default input styles
+.input-default {
+  @include default-input-styles();
+}
+
+// input style on dark theme
+.input-dark {
+  background: $light-gray;
+}
+
+// input style on light theme
+.input-light {
+  background: $white;
+}
+
+// large input field
+.input-large {
+  font-size: 18px;
+}

@@ -1,0 +1,33 @@
+@import "../../../common/functions.scss";
+@import "../../../common//variables.scss";
+
+// default button styles
+.button-default {
+  @include default-button-style();
+}
+
+// primary button
+.button-primary {
+  @include custom-button-color($blue);
+}
+
+// danger button
+.button-danger {
+  @include custom-button-color($danger);
+}
+
+// success button
+.button-success {
+  @include custom-button-color($success);
+}
+
+// button disabled
+.button-disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+// button-large
+.button-large {
+  padding: 10px;
+}

@@ -1,0 +1,14 @@
+// initial template container (form with options)
+.initial-template-container {
+  margin: 40px 0;
+  @media screen and (min-width: 640px) {
+    margin: 40px 20%;
+  }
+}
+
+// banner container
+.banner-text-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}

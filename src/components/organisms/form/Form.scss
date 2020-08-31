@@ -1,0 +1,32 @@
+@import "../../../common/variables.scss";
+
+// mixin for heading
+@mixin heading-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $dark-gray;
+  }
+}
+
+// form heading options container
+.form-type-heading-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 0;
+  background-color: $light-gray;
+  border-radius: $border-radius;
+
+  .login-heading {
+    @include heading-container();
+    border-right: 1px solid $black;
+  }
+
+  .sign-up-heading {
+    @include heading-container();
+  }
+}

@@ -1,0 +1,32 @@
+@import "./variables.scss";
+
+// default button styles
+@mixin default-button-style {
+  border: none;
+  border-radius: $border-radius;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+
+  &:focus-within {
+    outline: none;
+  }
+}
+
+// custom button, styling color of button
+@mixin custom-button-color($color) {
+  background-color: $color;
+  color: $white;
+}
+
+// default input styles
+@mixin default-input-styles {
+  border: $light-gray solid 1px;
+  border-radius: $border-radius;
+  padding: 5px;
+  width: 100%;
+
+  &:focus-within {
+    outline: none;
+  }
+}

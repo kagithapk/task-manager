@@ -1,0 +1,28 @@
+@import "../../../common/variables.scss";
+
+// dark theme text
+.text-p-dark {
+  color: $white;
+}
+
+// light theme text
+.text-p-light {
+  color: $black;
+}
+
+// theme for heading
+.text-p-black {
+  color: $black;
+  font-size: 18px;
+}
+
+// banner text style
+.banner-text {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: initial;
+
+  @media screen and (min-width: 640px) {
+    font-size: 36px;
+  }
+}
