@@ -11,6 +11,10 @@
     cursor: pointer;
     background-color: $dark-gray;
   }
+
+  &:focus-within {
+    outline: none;
+  }
 }
 
 // form heading options container

@@ -7,7 +7,7 @@ import TextP from '../../atoms/textP';
 const Form = ({
   tabOptionOneText,
   tabOptionTwoText,
-  setFormType,
+  onTabClick,
   form,
 }) => (
   <>
@@ -16,8 +16,8 @@ const Form = ({
         <section
           role="button"
           className="login-heading"
-          onKeyDown={() => setFormType('login')}
-          onClick={() => setFormType('login')}
+          onKeyDown={() => onTabClick('login')}
+          onClick={() => onTabClick('login')}
           tabIndex={0}
         >
           <TextP context={tabOptionOneText} className="text-p-black" />
@@ -25,8 +25,8 @@ const Form = ({
         <section
           role="button"
           className="sign-up-heading"
-          onKeyDown={() => setFormType('signIn')}
-          onClick={() => setFormType('signIn')}
+          onKeyDown={() => onTabClick('signUp')}
+          onClick={() => onTabClick('signUp')}
           tabIndex={-1}
         >
           <TextP context={tabOptionTwoText} className="text-p-black" />
@@ -42,7 +42,7 @@ const Form = ({
 Form.propTypes = {
   tabOptionOneText: PropTypes.string,
   tabOptionTwoText: PropTypes.string,
-  setFormType: PropTypes.func.isRequired,
+  onTabClick: PropTypes.func.isRequired,
   form: PropTypes.element,
 };
 

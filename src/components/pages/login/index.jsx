@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import InitialTemplate from '../../templates/initialTemplate';
 import { loginFormFields, signInFormFields } from '../../../constants/formFields';
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
 
-const LoginPage = () => {
+const LoginPage = ({ history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,13 +20,19 @@ const LoginPage = () => {
     else setOpenForm(false);
   }, [email, password, name, formType]);
 
+  useEffect(() => {
+    setEmail('');
+    setPassword('');
+    setName('');
+  }, [formType]);
+
   let formFields;
 
   switch (formType) {
     case 'login':
       formFields = loginFormFields;
       break;
-    case 'signIn':
+    case 'signUp':
       formFields = signInFormFields;
       break;
     default:
@@ -36,13 +43,22 @@ const LoginPage = () => {
     event.preventDefault();
     switch (formType) {
       case 'login':
-        console.log(email, password);
+        history.push('/');
         break;
-      case 'signIn':
-        console.log(name, email, password);
+      case 'signUp':
+        history.push('/');
         break;
       default: break;
     }
+  };
+
+  const onTabClick = (value) => {
+    switch (value) {
+      case 'login': history.push('/login'); break;
+      case 'signUp': history.push('/sign-up'); break;
+      default: break;
+    }
+    setFormType(value);
   };
 
   const form = (
@@ -77,11 +93,21 @@ const LoginPage = () => {
         headingText="Kagitha's Task App"
         tabOptionOneText="Login"
         tabOptionTwoText="Sign up"
-        setFormType={setFormType}
+        onTabClick={onTabClick}
         form={form}
       />
     </>
   );
+};
+
+LoginPage.propTypes = {
+  history: PropTypes.shape(PropTypes.any),
+};
+
+LoginPage.defaultProps = {
+  history: {
+    push: () => {},
+  },
 };
 
 export default LoginPage;

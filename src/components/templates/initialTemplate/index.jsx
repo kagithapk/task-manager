@@ -9,7 +9,7 @@ const InitialTemplate = ({
   form,
   tabOptionOneText,
   tabOptionTwoText,
-  setFormType,
+  onTabClick,
 }) => (
   <>
     <section className="initial-template-container">
@@ -19,7 +19,7 @@ const InitialTemplate = ({
       <Form
         tabOptionOneText={tabOptionOneText}
         tabOptionTwoText={tabOptionTwoText}
-        setFormType={setFormType}
+        onTabClick={onTabClick}
         form={form}
       />
     </section>
@@ -31,7 +31,7 @@ InitialTemplate.propTypes = {
   form: PropTypes.element,
   tabOptionOneText: PropTypes.string,
   tabOptionTwoText: PropTypes.string,
-  setFormType: PropTypes.func.isRequired,
+  onTabClick: PropTypes.func.isRequired,
 };
 
 InitialTemplate.defaultProps = {

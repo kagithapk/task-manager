@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Button from './components/atoms/button';
 import useChangeTheme from './hooks/useChangeTheme';
@@ -18,7 +19,12 @@ function App() {
           handleClick={useChangeTheme()}
         />
       </section>
-      <LoginPage />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={LoginPage} />
+          <Route path="/sign-up" component={LoginPage} />
+        </Switch>
+      </BrowserRouter>
     </section>
   );
 }
