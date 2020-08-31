@@ -3,7 +3,7 @@ import './App.scss';
 import Button from './components/atoms/button';
 import useChangeTheme from './hooks/useChangeTheme';
 import useTheme from './hooks/useTheme';
-import InitialTemplate from './components/templates/initialTemplate';
+import LoginPage from './components/pages/login';
 
 function App() {
   const theme = useTheme();
@@ -18,7 +18,7 @@ function App() {
           handleClick={useChangeTheme()}
         />
       </section>
-      <InitialTemplate />
+      <LoginPage />
     </section>
   );
 }
