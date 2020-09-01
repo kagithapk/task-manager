@@ -13,7 +13,7 @@ import useTheme from '../../../hooks/useTheme';
   max: max date
   maxLength: maximum length input can have
   min: min date
-  minlength: minimum length input can have
+  minLength: minimum length input can have
   name: Name of input
   pattern: pattern to check the input value
   readonly: Boolean to make input read only
@@ -32,7 +32,7 @@ const Input = ({
   max,
   maxLength,
   min,
-  minlength,
+  minLength,
   name,
   pattern,
   readonly,
@@ -59,7 +59,7 @@ const Input = ({
         max={max}
         maxLength={maxLength}
         min={min}
-        minLength={minlength}
+        minLength={minLength}
         name={name}
         pattern={pattern}
         readOnly={readonly}
@@ -83,7 +83,7 @@ Input.propTypes = {
   max: PropTypes.number,
   maxLength: PropTypes.number,
   min: PropTypes.number,
-  minlength: PropTypes.number,
+  minLength: PropTypes.number,
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string,
   readonly: PropTypes.bool,
@@ -102,7 +102,7 @@ Input.defaultProps = {
   max: 1000,
   maxLength: 1000,
   min: 0,
-  minlength: 0,
+  minLength: 0,
   // eslint-disable-next-line no-useless-escape
   pattern: '[\s\S]*',
   readonly: false,

@@ -3,8 +3,8 @@
 
 // mixin for shrink label
 @mixin input-label-shrink() {
-  font-size: 12px;
-  top: 0;
+  font-size: 14px;
+  top: -2px;
   transition: all ease-in-out 0.3s;
   font-weight: bold;
 
@@ -15,7 +15,7 @@
 
 // mixin for line below input
 @mixin stay-line-itself() {
-  transform: translateX(0);
+  transform: translateX(4%);
   transition: all ease-in-out 0.3s;
 }
 
@@ -24,14 +24,15 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 15px 0 10px 0;
+  padding: 20px 0 2px 0;
 
   // input label
   .input-label {
     padding: 0 5px;
     position: absolute;
     font-size: 18px;
-    top: 22.5px;
+    top: 27.5px;
+    left: 10px;
     transition: all ease-in-out 0.3s;
 
     &:hover {
@@ -67,11 +68,12 @@
 
   // border line initially not visible
   .border-line {
-    width: 100%;
+    width: 92%;
     position: absolute;
     border-bottom: 2px solid $black;
     transform: translateX(-101%);
     transition: all ease-in-out 0.3s;
+    bottom: 0;
 
     // line color in dark theme
     &-dark {
@@ -109,14 +111,20 @@
   @include default-input-styles();
 }
 
+// input round
+.input-round {
+  border-radius: 50px;
+}
+
 // input style on dark theme
 .input-dark {
   background: $darker-gray;
+  color: $white;
 }
 
 // input style on light theme
 .input-light {
-  background: $light-gray;
+  background: $light-white;
 }
 
 // large input field

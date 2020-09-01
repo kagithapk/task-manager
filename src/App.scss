@@ -3,18 +3,18 @@
 // app container
 .app-container {
   min-height: 100vh;
-  padding: 10px;
+  padding: .1px;
 }
 
 // app light theme
-.app-white {
-  background-color: $white;
+.app-light {
+  background-image: linear-gradient($purple, $blue);
   color: $black;
 }
 
 // app dark theme
 .app-dark {
-  background-color: $black;
+  background-image: linear-gradient($black, $dark-gray);
   color: $white;
 }
 

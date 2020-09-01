@@ -5,6 +5,8 @@ import Button from './components/atoms/button';
 import useChangeTheme from './hooks/useChangeTheme';
 import useTheme from './hooks/useTheme';
 import LoginPage from './components/pages/login';
+import DashboardPage from './components/pages/dashboard';
+import withLayout from './hoc/withLayout';
 
 function App() {
   const theme = useTheme();
@@ -21,6 +23,7 @@ function App() {
       </section>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/dashboard" component={withLayout(DashboardPage)} />
           <Route path="/login" component={LoginPage} />
           <Route path="/sign-up" component={LoginPage} />
         </Switch>

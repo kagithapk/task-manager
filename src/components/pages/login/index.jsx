@@ -5,6 +5,9 @@ import { loginFormFields, signInFormFields } from '../../../constants/formFields
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
 import TASK_API from '../../../api/taskApi';
 import END_POINTS from '../../../endPoints/routes';
+import { TYPE_LOGIN, TYPE_SIGN_UP } from '../../../constants/formType';
+import MANAGE_COOKIES from '../../../helpers/cookiesHelper';
+import Loader from '../../atoms/loader';
 
 /*
   props:
@@ -16,22 +19,24 @@ const LoginPage = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [openForm, setOpenForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const formURL = history.location.pathname.slice(1);
   let formTypeFromURL;
   switch (formURL) {
     case 'login':
-      formTypeFromURL = 'login'; break;
+      formTypeFromURL = TYPE_LOGIN; break;
     case 'sign-up':
-      formTypeFromURL = 'signUp'; break;
+      formTypeFromURL = TYPE_SIGN_UP; break;
     default:
-      formTypeFromURL = 'login';
+      formTypeFromURL = TYPE_LOGIN;
   }
   const [formType, setFormType] = useState(formTypeFromURL);
 
   useEffect(() => {
     if (email.trim()
       && password.trim()
-      && (formType.toLowerCase() === 'login'
+      && (formType.toLowerCase() === TYPE_LOGIN
         ? true
         : name.trim())) setOpenForm(true);
     else setOpenForm(false);
@@ -46,10 +51,10 @@ const LoginPage = ({ history }) => {
   let formFields;
 
   switch (formType) {
-    case 'login':
+    case TYPE_LOGIN:
       formFields = loginFormFields;
       break;
-    case 'signUp':
+    case TYPE_SIGN_UP:
       formFields = signInFormFields;
       break;
     default:
@@ -58,28 +63,35 @@ const LoginPage = ({ history }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     switch (formType) {
-      case 'login':
+      case TYPE_LOGIN:
         TASK_API.post(END_POINTS.usersLogin, { email, password })
-          .then((response) => {
+          .then(async (response) => {
             if (response.status === 200) {
+              setIsLoading(false);
               console.log(response.data);
-              history.push('/');
+              await MANAGE_COOKIES.set('token', response.data.token);
+              history.push('/dashboard');
             }
           })
           .catch((e) => {
+            setIsLoading(false);
             console.log(e);
           });
         break;
-      case 'signUp':
+      case TYPE_SIGN_UP:
         TASK_API.post(END_POINTS.users, { name, email, password })
-          .then((response) => {
+          .then(async (response) => {
             if (response.status === 201) {
+              setIsLoading(false);
               console.log(response.data);
-              history.push('/');
+              await MANAGE_COOKIES.set('token', response.data.token);
+              history.push('/dashboard');
             }
           })
           .catch((e) => {
+            setIsLoading(false);
             console.log(e);
           });
         history.push('/');
@@ -90,8 +102,8 @@ const LoginPage = ({ history }) => {
 
   const onTabClick = (value) => {
     switch (value) {
-      case 'login': history.push('/login'); break;
-      case 'signUp': history.push('/sign-up'); break;
+      case TYPE_LOGIN: history.push('/login'); break;
+      case TYPE_SIGN_UP: history.push('/sign-up'); break;
       default: break;
     }
     setFormType(value);
@@ -120,6 +132,7 @@ const LoginPage = ({ history }) => {
           </section>
         ))
       }
+      {isLoading && <Loader />}
     </>
   );
 

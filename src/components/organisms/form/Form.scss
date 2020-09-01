@@ -1,5 +1,18 @@
 @import "../../../common/variables.scss";
 
+.form-types-container {
+  background-color: $white;
+  border-radius: $border-radius;
+  padding: 10px;
+  box-shadow: 0px 2px 2px 2px;
+  margin-top: 25%;
+
+  &-dark {
+    background: $dark-gray;
+    box-shadow: 0 2px 2px 2px $black;
+  }
+}
+
 // mixin for heading
 @mixin heading-container {
   width: 100%;

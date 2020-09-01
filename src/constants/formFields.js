@@ -7,7 +7,7 @@ export const loginFormFields = [
       type: 'email',
       id: 'login-email',
       name: 'Email',
-      className: 'input-large',
+      className: 'input-large input-round',
       placeholder: 'Enter Email',
       title: 'Enter a valid email address.',
     },
@@ -20,7 +20,7 @@ export const loginFormFields = [
       type: 'password',
       name: 'Password',
       placeholder: 'Enter Password',
-      className: 'input-large',
+      className: 'input-large input-round',
     },
   },
   {
@@ -29,7 +29,7 @@ export const loginFormFields = [
     props: {
       type: 'submit',
       label: 'Login',
-      className: 'button-success button-large',
+      className: 'button-success button-large button-space',
     },
   },
 ];
@@ -43,7 +43,7 @@ export const signInFormFields = [
       type: 'text',
       id: 'login-name',
       name: 'Name',
-      className: 'input-large',
+      className: 'input-large input-round',
       placeholder: 'Enter Name',
     },
   },
@@ -54,7 +54,7 @@ export const signInFormFields = [
       type: 'email',
       id: 'login-email',
       name: 'Email',
-      className: 'input-large',
+      className: 'input-large input-round',
       placeholder: 'Enter Email',
       title: 'Enter a valid email address.',
     },
@@ -67,7 +67,7 @@ export const signInFormFields = [
       type: 'password',
       name: 'Password',
       placeholder: 'Enter Password',
-      className: 'input-large',
+      className: 'input-large input-round',
     },
   },
   {
@@ -76,7 +76,7 @@ export const signInFormFields = [
     props: {
       type: 'submit',
       label: 'Login',
-      className: 'button-success button-large',
+      className: 'button-success button-large button-space',
     },
   },
 ];
