@@ -16,7 +16,6 @@ import useTheme from '../../../hooks/useTheme';
   minlength: minimum length input can have
   name: Name of input
   pattern: pattern to check the input value
-  placeholder: placeholder to show user when the input is empty
   readonly: Boolean to make input read only
   required: Boolean to make mandatory input field
   type: type of input
@@ -36,7 +35,6 @@ const Input = ({
   minlength,
   name,
   pattern,
-  // placeholder,
   readonly,
   required,
   title,
@@ -52,7 +50,7 @@ const Input = ({
 
   return (
     <section className="input-container">
-      <label htmlFor={id} className={`input-label ${value ? 'shrink' : ''}`}>{name}</label>
+      <label htmlFor={id} className={`input-label label-${theme} ${value ? `shrink  shrink-${theme}` : ''}`}>{name}</label>
       <input
         autoComplete={autocomplete}
         checked={checked}
@@ -64,7 +62,6 @@ const Input = ({
         minLength={minlength}
         name={name}
         pattern={pattern}
-        // placeholder={placeholder}
         readOnly={readonly}
         required={required}
         title={title}
@@ -73,7 +70,7 @@ const Input = ({
         className={`input-default input-${theme} ${className}`}
         onChange={handleInputChange}
       />
-      <div className={`border-line ${value ? 'stay-line' : ''}`} />
+      <div className={`border-line border-line-${theme} ${value ? 'stay-line' : ''}`} />
     </section>
   );
 };
@@ -89,7 +86,6 @@ Input.propTypes = {
   minlength: PropTypes.number,
   name: PropTypes.string.isRequired,
   pattern: PropTypes.string,
-  // placeholder: PropTypes.string,
   readonly: PropTypes.bool,
   required: PropTypes.bool,
   title: PropTypes.string,
@@ -109,7 +105,6 @@ Input.defaultProps = {
   minlength: 0,
   // eslint-disable-next-line no-useless-escape
   pattern: '[\s\S]*',
-  // placeholder: 'Enter the input',
   readonly: false,
   required: false,
   title: 'Enter the formatted request.',

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import InitialTemplate from '../../templates/initialTemplate';
 import { loginFormFields, signInFormFields } from '../../../constants/formFields';
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
+import TASK_API from '../../../api/taskApi';
+import END_POINTS from '../../../endPoints/routes';
 
 /*
   props:
@@ -14,7 +16,17 @@ const LoginPage = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [openForm, setOpenForm] = useState(false);
-  const [formType, setFormType] = useState('login');
+  const formURL = history.location.pathname.slice(1);
+  let formTypeFromURL;
+  switch (formURL) {
+    case 'login':
+      formTypeFromURL = 'login'; break;
+    case 'sign-up':
+      formTypeFromURL = 'signUp'; break;
+    default:
+      formTypeFromURL = 'login';
+  }
+  const [formType, setFormType] = useState(formTypeFromURL);
 
   useEffect(() => {
     if (email.trim()
@@ -48,9 +60,28 @@ const LoginPage = ({ history }) => {
     event.preventDefault();
     switch (formType) {
       case 'login':
-        history.push('/');
+        TASK_API.post(END_POINTS.usersLogin, { email, password })
+          .then((response) => {
+            if (response.status === 200) {
+              console.log(response.data);
+              history.push('/');
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         break;
       case 'signUp':
+        TASK_API.post(END_POINTS.users, { name, email, password })
+          .then((response) => {
+            if (response.status === 201) {
+              console.log(response.data);
+              history.push('/');
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         history.push('/');
         break;
       default: break;

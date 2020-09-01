@@ -31,12 +31,22 @@
     padding: 0 5px;
     position: absolute;
     font-size: 18px;
-    top: 20px;
+    top: 22.5px;
     transition: all ease-in-out 0.3s;
 
     &:hover {
       cursor: unset;
     }
+  }
+
+  // light theme (label is black in color)
+  .label-light {
+    color: $black;
+  }
+
+  // dark theme (label is white in color)
+  .label-dark {
+    color: $white;
   }
 
   // when there is any value inside input
@@ -45,15 +55,28 @@
     @include input-label-shrink();
   }
 
+  // when shrink in light theme
+  .shrink-light {
+    color: $black;
+  }
+
+  // when shrink in dark theme
+  .shrink-dark {
+    color: $white;
+  }
+
   // border line initially not visible
   .border-line {
     width: 100%;
-    height: 2px;
     position: absolute;
     border-bottom: 2px solid $black;
     transform: translateX(-101%);
-    bottom: 2px;
     transition: all ease-in-out 0.3s;
+
+    // line color in dark theme
+    &-dark {
+      border-bottom-color: $white;
+    }
   }
 
   // line under input
@@ -70,6 +93,14 @@
     .input-label {
       @include input-label-shrink();
     }
+
+    .label-light {
+      color: $black;
+    }
+  
+    .label-dark {
+      color: $white;
+    }
   }
 }
 
@@ -80,12 +111,12 @@
 
 // input style on dark theme
 .input-dark {
-  background: $light-gray;
+  background: $darker-gray;
 }
 
 // input style on light theme
 .input-light {
-  background: $white;
+  background: $light-gray;
 }
 
 // large input field
