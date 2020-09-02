@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from '../components/organisms/header';
+import Space from '../components/atoms/space';
 
-const withLayout = (component) => {
+const withLayout = (Component) => {
   const wrapperComponent = () => (
     <>
-      <p>wrapper component</p>
-      {component}
+      <Header />
+      <Space />
+      <Component />
     </>
   );
 

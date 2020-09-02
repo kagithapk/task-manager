@@ -6,6 +6,7 @@ import useChangeTheme from './hooks/useChangeTheme';
 import useTheme from './hooks/useTheme';
 import LoginPage from './components/pages/login';
 import DashboardPage from './components/pages/dashboard';
+import AccountPage from './components/pages/account';
 import withLayout from './hoc/withLayout';
 
 function App() {
@@ -23,9 +24,10 @@ function App() {
       </section>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/dashboard" component={withLayout(DashboardPage)} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/sign-up" component={LoginPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/sign-up" component={LoginPage} />
+          <Route exact path="/home" component={withLayout(DashboardPage)} />
+          <Route exact path="/account" component={withLayout(AccountPage)} />
         </Switch>
       </BrowserRouter>
     </section>

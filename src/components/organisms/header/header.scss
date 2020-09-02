@@ -1,0 +1,147 @@
+@import "../../../common/variables.scss";
+
+// header
+.header{
+  &-container {
+    background-color: $orange;
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+  }
+
+  // logo container
+  &-logo-container {
+    padding: 0 15px;
+  }
+
+  // bar container for mobile
+  &-bar-container {
+    padding: 0 15px;
+  }
+
+  // menu
+  &-menu {
+    outline: none;
+  
+    &-bar1, &-bar2, &-bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #333;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    @media screen and (min-width: 640px) {
+      display: none;
+    }
+  }
+
+  // on menu click in mobile
+  &-change {
+    .header-menu-bar1 {
+      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+      transform: rotate(-45deg) translate(-9px, 6px);
+    }
+
+    .header-menu-bar2 {opacity: 0;}
+
+    .header-menu-bar3 {
+      -webkit-transform: rotate(45deg) translate(-9px, -6px);
+      transform: rotate(45deg) translate(-9px, -6px);
+    }
+  }
+
+  // dark theme
+  &-dark {
+    background-color: $dark-gray;
+  }
+
+  // navbar container
+  &-nav-container {
+    display: none;
+
+    @media screen and (min-width: 640px) {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    // view for dropdown in mobile
+    &__view {
+      @media screen and (max-width: 639px) {
+        display: block;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        background-color: $light-orange;
+        width: 100%;
+        height: 100vh;
+
+        .header-un-list {
+          flex-direction: column;
+        }
+
+        .header-list {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+
+  // navigation items
+  &-navigation {
+    margin: 0 20px;
+  }
+
+  // unordered list
+  &-un-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  // link
+  &-link {
+    text-decoration: none;
+  }
+
+  // link light theme
+  &-link-light {
+    color: $black;
+    
+    &:visited {
+      color: $black;
+    }
+  }
+
+  // link dark theme
+  &-link-dark {
+    color: $white;
+    
+    &:visited {
+      color: $white;
+    }
+  }
+
+  // list items
+  &-list {
+    padding: 0 10px;
+  }
+
+  // list items light theme
+  &-list-light {
+    .active {
+      color: $white;
+    }
+  }
+
+  // list item dark theme
+  &-list-dark {
+    .active {
+      color: $black;
+    }
+  }
+}

@@ -72,7 +72,7 @@ const LoginPage = ({ history }) => {
               setIsLoading(false);
               console.log(response.data);
               await MANAGE_COOKIES.set('token', response.data.token);
-              history.push('/dashboard');
+              history.push('/home');
             }
           })
           .catch((e) => {
@@ -87,7 +87,7 @@ const LoginPage = ({ history }) => {
               setIsLoading(false);
               console.log(response.data);
               await MANAGE_COOKIES.set('token', response.data.token);
-              history.push('/dashboard');
+              history.push('/home');
             }
           })
           .catch((e) => {

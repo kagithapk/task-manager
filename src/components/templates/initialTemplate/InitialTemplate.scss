@@ -1,6 +1,8 @@
 // initial template container (form with options)
 .initial-template-container {
   margin: 40px 0;
+  padding: 0 20px;
+
   @media screen and (min-width: 640px) {
     margin: 40px 35%;
   }

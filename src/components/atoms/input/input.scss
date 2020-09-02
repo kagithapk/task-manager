@@ -4,7 +4,7 @@
 // mixin for shrink label
 @mixin input-label-shrink() {
   font-size: 14px;
-  top: -2px;
+  top: 2px;
   transition: all ease-in-out 0.3s;
   font-weight: bold;
 
@@ -15,7 +15,7 @@
 
 // mixin for line below input
 @mixin stay-line-itself() {
-  transform: translateX(4%);
+  transform: translateX(0);
   transition: all ease-in-out 0.3s;
 }
 
@@ -68,7 +68,7 @@
 
   // border line initially not visible
   .border-line {
-    width: 92%;
+    width: 100%;
     position: absolute;
     border-bottom: 2px solid $black;
     transform: translateX(-101%);
@@ -118,13 +118,13 @@
 
 // input style on dark theme
 .input-dark {
-  background: $darker-gray;
+  background: $dark-gray;
   color: $white;
 }
 
 // input style on light theme
 .input-light {
-  background: $light-white;
+  background: $white;
 }
 
 // large input field
