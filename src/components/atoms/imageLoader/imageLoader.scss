@@ -1,0 +1,38 @@
+.image-loader {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #efefef;
+  animation: background-fade 10s;
+}
+
+// Animation to change color for the loader block
+@keyframes background-fade {
+  5% {
+    background: #fcfcfc;
+  }
+  15% {
+    background: #efefef;
+  }
+  30% {
+    background: #f6f6f6;
+  }
+  40% {
+    background: #e7e7e7;
+  }
+  55% {
+    background: #fcfcfc;
+  }
+  46% {
+    background: #efefef;
+  }
+  60% {
+    background: #efefef;
+  }
+  85% {
+    background: #fcfcfc;
+  }
+  95% {
+    background: #f6f6f6;
+  }
+}

@@ -1,18 +1,41 @@
-import React, { useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import './header.scss';
 import useTheme from '../../../hooks/useTheme';
 import TextP from '../../atoms/textP';
 import Button from '../../atoms/button';
+import TASK_API from '../../../api/taskApi';
+import END_POINTS from '../../../endPoints/routes';
+import Loader from '../../atoms/loader';
+import MANAGE_COOKIES from '../../../helpers/cookiesHelper';
+import NAVBAR_ITEMS from '../../../constants/navbarItems';
 
 const Header = () => {
   const theme = useTheme();
   const menuBar = useRef();
   const headerNav = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccessfulLogout, setIsSuccessfulLogout] = useState(false);
 
   const onMenuClick = () => {
     menuBar.current.classList.toggle('header-change');
     headerNav.current.classList.toggle('header-nav-container__view');
+  };
+
+  const logout = () => {
+    setIsLoading(true);
+    TASK_API.post(END_POINTS.usersLogout)
+      .then(async (response) => {
+        if (response.status === 200) {
+          setIsLoading(false);
+          MANAGE_COOKIES.remove('token');
+          MANAGE_COOKIES.remove('user');
+          setIsSuccessfulLogout(true);
+        }
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -37,12 +60,11 @@ const Header = () => {
           <section ref={headerNav} className="header-nav-container">
             <nav className="header-navigation">
               <ul className="header-un-list">
-                <li className={`header-list header-list-${theme}`}>
-                  <NavLink className={`header-link header-link-${theme}`} to="/home">Home</NavLink>
-                </li>
-                <li className={`header-list header-list-${theme}`}>
-                  <NavLink className={`header-link header-link-${theme}`} to="/account">Account</NavLink>
-                </li>
+                {NAVBAR_ITEMS.map((navItem) => (
+                  <li key={navItem.route} className={`header-list header-list-${theme}`}>
+                    <NavLink className={`header-link header-link-${theme}`} to={navItem.route}>{navItem.name}</NavLink>
+                  </li>
+                ))}
               </ul>
             </nav>
             <section className="header-logout-container">
@@ -50,12 +72,14 @@ const Header = () => {
                 label="Log out"
                 type="button"
                 className="button-danger"
-                handleClick={() => {}}
+                handleClick={logout}
               />
             </section>
           </section>
         </section>
       </header>
+      {isLoading && <Loader />}
+      {isSuccessfulLogout && <Redirect to="/login" />}
     </>
   );
 };

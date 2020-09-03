@@ -1,11 +1,22 @@
-// import axios from 'axios';
 import instance from './axiosInstance';
+import GET_TOKEN from '../helpers/getToken';
+
+const instanceHelper = (method, route, data = {}) => (
+  instance({
+    method,
+    url: route,
+    data,
+    headers: {
+      Authorization: GET_TOKEN(),
+    },
+  })
+);
 
 const TASK_API = {
-  get: (route) => instance.get(route),
-  post: (route, data) => instance.post(route, data),
-  patch: (route, data) => instance.patch(route, data),
-  delete: (route, data) => instance.delete(route, data),
+  get: (route) => instanceHelper('get', route),
+  post: (route, data) => instanceHelper('post', route, data),
+  patch: (route, data) => instanceHelper('patch', route, data),
+  delete: (route, data) => instanceHelper('delete', route, data),
 };
 
 export default TASK_API;

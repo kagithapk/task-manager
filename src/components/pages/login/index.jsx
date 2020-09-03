@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import InitialTemplate from '../../templates/initialTemplate';
 import { loginFormFields, signInFormFields } from '../../../constants/formFields';
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
@@ -70,14 +71,13 @@ const LoginPage = ({ history }) => {
           .then(async (response) => {
             if (response.status === 200) {
               setIsLoading(false);
-              console.log(response.data);
               await MANAGE_COOKIES.set('token', response.data.token);
+              await MANAGE_COOKIES.set('user', response.data.user);
               history.push('/home');
             }
           })
-          .catch((e) => {
+          .catch(() => {
             setIsLoading(false);
-            console.log(e);
           });
         break;
       case TYPE_SIGN_UP:
@@ -85,14 +85,12 @@ const LoginPage = ({ history }) => {
           .then(async (response) => {
             if (response.status === 201) {
               setIsLoading(false);
-              console.log(response.data);
               await MANAGE_COOKIES.set('token', response.data.token);
               history.push('/home');
             }
           })
-          .catch((e) => {
+          .catch(() => {
             setIsLoading(false);
-            console.log(e);
           });
         history.push('/');
         break;
@@ -160,4 +158,4 @@ LoginPage.defaultProps = {
   },
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);
