@@ -4,6 +4,7 @@ const END_POINTS = {
   usersLogout: '/users/logout',
   usersLogoutAll: '/users/logoutAll',
   usersIdAvatar: (id) => `/users/${id}/avatar`,
+  tasks: '/tasks',
 };
 
 export default END_POINTS;

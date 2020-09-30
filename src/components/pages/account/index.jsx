@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import TextP from '../../atoms/textP';
 import MANAGE_COOKIES from '../../../helpers/cookiesHelper';
 import Image from '../../atoms/image';
@@ -12,15 +11,15 @@ import NO_USER from '../../../assets/images/no-user-profile-picture.png';
 import Button from '../../atoms/button';
 import ImageLoader from '../../atoms/imageLoader';
 
-const AccountPage = ({ history }) => {
+const AccountPage = () => {
   const user = MANAGE_COOKIES.get('user');
   const [userAvatar, setUserAvatar] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccessfulLogout, setIsSuccessfulLogout] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     TASK_API
-      // eslint-disable-next-line no-underscore-dangle
       .get(END_POINTS.usersIdAvatar(user._id))
       .then((response) => {
         setUserAvatar(response.data);
@@ -30,7 +29,7 @@ const AccountPage = ({ history }) => {
         setUserAvatar(NO_USER);
         setIsLoading(false);
       });
-  }, []);
+  }, [user._id]);
 
   const logoutAll = () => {
     setIsLoading(true);
@@ -39,7 +38,7 @@ const AccountPage = ({ history }) => {
         setIsLoading(false);
         MANAGE_COOKIES.remove('token');
         MANAGE_COOKIES.remove('user');
-        history.push('/login');
+        setIsSuccessfulLogout(true);
       })
       .catch(() => {
         setIsLoading(false);
@@ -48,39 +47,31 @@ const AccountPage = ({ history }) => {
 
   return (
     <>
-      <section className="account-container">
-        <section className="account-image-container">
-          {!userAvatar
-            ? <ImageLoader />
-            : <Image source={userAvatar} alt="avatar" className="user-avatar" />}
-        </section>
-        <section className="account-user-details">
-          <TextP context={user.name} />
-          <TextP context={user.email} />
-          <TextP context={user.age.toString()} />
-        </section>
-        <section className="logout-all-container">
-          <Button
-            type="button"
-            label="Logout From All the devices"
-            className="button-danger"
-            handleClick={logoutAll}
-          />
-        </section>
-      </section>
       {isLoading && <Loader />}
+      {isSuccessfulLogout ? <Redirect to="/login" /> : (
+        <section className="account-container">
+          <section className="account-image-container">
+            {!userAvatar
+              ? <ImageLoader />
+              : <Image source={userAvatar} alt="avatar" className="user-avatar" />}
+          </section>
+          <section className="account-user-details">
+            <TextP context={user.name} />
+            <TextP context={user.email} />
+            <TextP context={user.age.toString()} />
+          </section>
+          <section className="logout-all-container">
+            <Button
+              type="button"
+              label="Logout From All the devices"
+              className="button-danger"
+              handleClick={logoutAll}
+            />
+          </section>
+        </section>
+      )}
     </>
   );
 };
 
-AccountPage.propTypes = {
-  history: PropTypes.shape(PropTypes.any),
-};
-
-AccountPage.defaultProps = {
-  history: {
-    push: () => {},
-  },
-};
-
-export default withRouter(AccountPage);
+export default AccountPage;

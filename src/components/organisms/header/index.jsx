@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import './header.scss';
+import useChangeTheme from '../../../hooks/useChangeTheme';
 import useTheme from '../../../hooks/useTheme';
 import TextP from '../../atoms/textP';
 import Button from '../../atoms/button';
@@ -60,6 +61,14 @@ const Header = () => {
           <section ref={headerNav} className="header-nav-container">
             <nav className="header-navigation">
               <ul className="header-un-list">
+                <li className={`header-list header-list=${theme}`}>
+                  <Button
+                    type="button"
+                    label="Change Theme"
+                    className="button-primary"
+                    handleClick={useChangeTheme()}
+                  />
+                </li>
                 {NAVBAR_ITEMS.map((navItem) => (
                   <li key={navItem.route} className={`header-list header-list-${theme}`}>
                     <NavLink className={`header-link header-link-${theme}`} to={navItem.route}>{navItem.name}</NavLink>

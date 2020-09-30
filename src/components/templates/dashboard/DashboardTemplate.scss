@@ -1,0 +1,51 @@
+@import "../../../common/variables.scss";
+// task
+.task {
+  // task template container
+  &-template {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+
+    @media screen and (min-width: 640px) {
+      padding: 1rem 5rem;
+      flex-direction: row;
+      height: 85vh;
+    }
+  }
+
+  // task form container
+  &-form {
+    flex-basis: 45%;
+    padding: 1rem;
+    border-radius: $border-radius;
+    margin: 1rem 0;
+
+    // light theme for task form
+    &-light {
+      background-color: $white;
+    }
+
+    // dark theme for task form
+    &-dark {
+      background: linear-gradient(45deg, $darker-gray, $dark-gray);
+    }
+
+    @media screen and (min-width: 640px) {
+      margin: 0;
+    }
+
+  }
+
+  // task list container
+  &-container {
+    padding: 1rem;
+    flex-basis: 45%;
+    background: linear-gradient(45deg, $light-orange, $orange);
+    border-radius: $border-radius;
+    max-height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+}

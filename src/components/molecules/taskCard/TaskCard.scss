@@ -1,0 +1,19 @@
+@import "../../../common/variables.scss";
+
+// task
+.task {
+  // each task container
+  &-each-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: $border-radius;
+
+    &-dark {
+      background-color: $darker-gray;
+    }
+
+    &-light {
+      background-color: $white;
+    }
+  }
+}

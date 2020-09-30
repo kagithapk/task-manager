@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import InitialTemplate from '../../templates/initialTemplate';
 import { loginFormFields, signInFormFields } from '../../../constants/formFields';
 import { loginFormFields as tagsHelper } from '../../../helpers/loginFormFields';
@@ -149,13 +148,22 @@ const LoginPage = ({ history }) => {
 };
 
 LoginPage.propTypes = {
-  history: PropTypes.shape(PropTypes.any),
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+    push: PropTypes.func,
+  }),
 };
 
 LoginPage.defaultProps = {
   history: {
     push: () => {},
+    location: {
+      pathname: '',
+    },
+    isRequired: false,
   },
 };
 
-export default withRouter(LoginPage);
+export default LoginPage;
