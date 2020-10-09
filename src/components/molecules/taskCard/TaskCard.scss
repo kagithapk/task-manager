@@ -10,10 +10,12 @@
 
     &-dark {
       background-color: $darker-gray;
+      transition: $transition-theme;
     }
 
     &-light {
       background-color: $white;
+      transition: $transition-theme;
     }
   }
 }

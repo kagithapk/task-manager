@@ -42,11 +42,13 @@
   // light theme (label is black in color)
   .label-light {
     color: $black;
+    transition: $transition-theme;
   }
 
   // dark theme (label is white in color)
   .label-dark {
     color: $white;
+    transition: $transition-theme;
   }
 
   // when there is any value inside input
@@ -58,11 +60,13 @@
   // when shrink in light theme
   .shrink-light {
     color: $black;
+    transition: $transition-theme;
   }
 
   // when shrink in dark theme
   .shrink-dark {
     color: $white;
+    transition: $transition-theme;
   }
 
   // border line initially not visible
@@ -73,10 +77,12 @@
     transform: translateX(-101%);
     transition: all ease-in-out 0.3s;
     bottom: 0;
+    transition: $transition-theme;
 
     // line color in dark theme
     &-dark {
       border-bottom-color: $white;
+      transition: $transition-theme;
     }
   }
 
@@ -97,10 +103,12 @@
 
     .label-light {
       color: $black;
+      transition: $transition-theme;
     }
   
     .label-dark {
       color: $white;
+      transition: $transition-theme;
     }
   }
 }
@@ -119,11 +127,13 @@
 .input-dark {
   background: $dark-gray;
   color: $white;
+  transition: $transition-theme;
 }
 
 // input style on light theme
 .input-light {
   background: $white;
+  transition: $transition-theme;
 }
 
 // large input field

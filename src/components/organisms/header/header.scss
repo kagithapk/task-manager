@@ -10,6 +10,7 @@
     justify-content: space-between;
     width: 100%;
     position: fixed;
+    transition: $transition-theme;
   }
 
   // logo container
@@ -57,6 +58,7 @@
   // dark theme
   &-dark {
     background-color: $dark-gray;
+    transition: $transition-theme;
   }
 
   // navbar container
@@ -111,7 +113,8 @@
   // link light theme
   &-link-light {
     color: $black;
-    
+    transition: $transition-theme;
+   
     &:visited {
       color: $black;
     }
@@ -120,7 +123,8 @@
   // link dark theme
   &-link-dark {
     color: $white;
-    
+    transition: $transition-theme;
+  
     &:visited {
       color: $white;
     }
@@ -135,6 +139,7 @@
   &-list-light {
     .active {
       color: $white;
+      transition: $transition-theme;
     }
   }
 
@@ -142,6 +147,7 @@
   &-list-dark {
     .active {
       color: $black;
+      transition: $transition-theme;
     }
   }
 }

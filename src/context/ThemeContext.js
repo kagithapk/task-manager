@@ -19,7 +19,7 @@ const themeReducer = (state, action) => {
       };
     default: return state;
   }
-}
+};
 
 const changeTheme = (dispatch) => (themeType, themePayload) => {
   dispatch({ type: themeType, payload: themePayload });

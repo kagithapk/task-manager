@@ -25,11 +25,13 @@
     // light theme for task form
     &-light {
       background-color: $white;
+      transition: $transition-theme;
     }
 
     // dark theme for task form
     &-dark {
       background: linear-gradient(45deg, $darker-gray, $dark-gray);
+      transition: $transition-theme;
     }
 
     @media screen and (min-width: 640px) {
@@ -47,5 +49,11 @@
     max-height: 100vh;
     overflow-y: scroll;
     scrollbar-width: none;
+    transition: all ease .3s;
+
+    &:hover {
+      box-shadow: 10px 10px 5px $shadow;
+      transition: all ease .3s;
+    }
   }
 }

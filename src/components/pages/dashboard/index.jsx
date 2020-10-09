@@ -20,6 +20,7 @@ const DashboardPage = () => {
         setIsLoading(false);
       });
   }, []);
+
   return (
     <>
       {isLoading && <Loader />}

@@ -29,7 +29,8 @@ const AccountPage = () => {
         setUserAvatar(NO_USER);
         setIsLoading(false);
       });
-  }, [user._id]);
+    // eslint-disable-next-line
+  }, []);
 
   const logoutAll = () => {
     setIsLoading(true);
