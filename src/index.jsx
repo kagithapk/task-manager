@@ -5,13 +5,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider as ThemeProvider } from './context/ThemeContext';
+import { Provider as HeaderMenuProvider } from './context/headerMenuFixContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <HeaderMenuProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HeaderMenuProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),

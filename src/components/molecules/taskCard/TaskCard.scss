@@ -3,19 +3,54 @@
 // task
 .task {
   // each task container
-  &-each-container {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: $border-radius;
+  &-each {
+    &-container {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: $border-radius;
+      position: relative;
+      overflow: hidden;
+      transition: all ease .3s;
 
-    &-dark {
-      background-color: $darker-gray;
-      transition: $transition-theme;
-    }
+      .task-each-button {
+        &-container {
+          position: absolute;
+          right: -50%;
+          top: 22%;
+          transition: all ease .3s;
+          width: 0;
+          height: 0;
+          display: flex;
+        }
 
-    &-light {
-      background-color: $white;
-      transition: $transition-theme;
+        margin: 0 5px;
+      }
+
+      &:hover {
+        padding-right: 3rem;
+        .task-each-button {
+          &-container {
+            width: fit-content;
+            height: fit-content;
+            right: 2%;
+            transition: all ease .3s;
+          }
+        }
+      }
+
+      &-dark {
+        background-color: $darker-gray;
+        transition: $transition-theme, padding-right .3s;
+      }
+
+      &-light {
+        background-color: $white;
+        transition: $transition-theme, padding-right .3s;
+      }
+
+      &--complete {
+        background-color: $lighter-gray;
+      }
     }
   }
 }

@@ -1,4 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, {
+  useRef,
+  useState,
+  useContext,
+  useEffect,
+} from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import './header.scss';
 import useChangeTheme from '../../../hooks/useChangeTheme';
@@ -10,6 +15,7 @@ import END_POINTS from '../../../endPoints/routes';
 import Loader from '../../atoms/loader';
 import MANAGE_COOKIES from '../../../helpers/cookiesHelper';
 import NAVBAR_ITEMS from '../../../constants/navbarItems';
+import { Context as HeaderMenuContext } from '../../../context/headerMenuFixContext';
 
 const Header = () => {
   const theme = useTheme();
@@ -17,14 +23,26 @@ const Header = () => {
   const headerNav = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccessfulLogout, setIsSuccessfulLogout] = useState(false);
+  const { state, updateMenuStatus } = useContext(HeaderMenuContext);
+  const { isHeaderMenuOpen } = state;
 
   const onMenuClick = () => {
+    if (isHeaderMenuOpen) updateMenuStatus('menu_close');
+    else updateMenuStatus('menu_open');
     menuBar.current.classList.toggle('header-change');
     headerNav.current.classList.toggle('header-nav-container__view');
   };
 
+  useEffect(() => {
+    const menuBarClasses = menuBar.current.classList;
+    const headerNavClasses = headerNav.current.classList;
+    if (menuBarClasses.contains('header-change')) menuBarClasses.remove('header-change');
+    if (headerNavClasses.contains('header-nav-container__view')) headerNavClasses.remove('header-nav-container__view');
+  }, []);
+
   const logout = () => {
     setIsLoading(true);
+    onMenuClick();
     TASK_API.post(END_POINTS.usersLogout)
       .then(async (response) => {
         if (response.status === 200) {

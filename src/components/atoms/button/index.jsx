@@ -19,7 +19,7 @@ const Button = ({
 }) => (
   <button
     type={type}
-    className={`button-default ${className} ${disabled ? 'button-disabled' : null}`}
+    className={`button-default ${className} ${disabled ? 'button-disabled' : ''}`}
     onClick={handleClick}
     disabled={disabled}
   >
@@ -37,7 +37,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  className: null,
+  className: '',
   disabled: false,
 };
 

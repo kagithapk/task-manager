@@ -8,6 +8,10 @@
     justify-content: space-between;
     flex-direction: column-reverse;
 
+    .hide-list {
+      display: none;
+    }
+
     @media screen and (min-width: 640px) {
       padding: 1rem 5rem;
       flex-direction: row;
@@ -21,17 +25,74 @@
     padding: 1rem;
     border-radius: $border-radius;
     margin: 1rem 0;
+    transition: all ease .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    // form heading
+    p {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    // form container in dashboard
+    .form-container {
+      width: 100%;
+      flex-basis: 75%;
+      justify-content: space-between;
+    }
+
+    &:hover {
+      box-shadow: 10px 10px 5px $shadow;
+      transform: scale(1.01);
+      transition: all ease .3s;
+    }
+
+    // submit container
+    .task-submit {
+      &-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 10px;
+
+        button {
+          padding: 15px 10px;
+          @media screen and (min-width: 640px) {
+            padding: 5px 10px;
+            width: fit-content;
+          }
+        }
+      }
+    }
 
     // light theme for task form
     &-light {
       background-color: $white;
-      transition: $transition-theme;
+      transition: background-color ease .7s, all .3s;
     }
 
     // dark theme for task form
     &-dark {
       background: linear-gradient(45deg, $darker-gray, $dark-gray);
       transition: $transition-theme;
+    }
+
+    // desc
+    .text-field {
+      width: 100%;
+      transition: $transition-theme;
+      font-size: 18px;
+      border-radius: $border-radius;
+
+      &-dark {
+        color: $white;
+        background-color: $black;
+        transition: $transition-theme
+      }
     }
 
     @media screen and (min-width: 640px) {
@@ -44,15 +105,17 @@
   &-container {
     padding: 1rem;
     flex-basis: 45%;
-    background: linear-gradient(45deg, $light-orange, $orange);
+    background: linear-gradient(45deg, $dark-purple, $orange);
     border-radius: $border-radius;
     max-height: 100vh;
     overflow-y: scroll;
     scrollbar-width: none;
     transition: all ease .3s;
+    min-height: 35vh;
 
     &:hover {
       box-shadow: 10px 10px 5px $shadow;
+      transform: scale(1.01);
       transition: all ease .3s;
     }
   }

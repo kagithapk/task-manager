@@ -23,7 +23,8 @@
 
 // button disabled
 .button-disabled {
-  opacity: .6;
+  // opacity: .6;
+  background-color: rgba($blue, .6);
   cursor: not-allowed;
 }
 

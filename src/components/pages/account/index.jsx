@@ -57,9 +57,9 @@ const AccountPage = () => {
               : <Image source={userAvatar} alt="avatar" className="user-avatar" />}
           </section>
           <section className="account-user-details">
-            <TextP context={user.name} />
-            <TextP context={user.email} />
-            <TextP context={user.age.toString()} />
+            <TextP context={user.name} className="account__name" />
+            <TextP context={user.email} className="account__email" />
+            <TextP context={user.age.toString()} className="account__age" />
           </section>
           <section className="logout-all-container">
             <Button

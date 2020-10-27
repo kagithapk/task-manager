@@ -3,6 +3,7 @@
 // dark theme text
 .text-p-dark {
   color: $white;
+  transition: $transition-theme;
 }
 
 // light theme text
@@ -39,4 +40,15 @@
 .header-logo {
   font-size: 32px;
   font-family: cursive;
+}
+
+// task label
+.task-label {
+  font-size: 24px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+// striking text
+.strike-text {
+  text-decoration: line-through;
 }
